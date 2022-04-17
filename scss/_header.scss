@@ -1,0 +1,86 @@
+.main-header {
+  padding: 10px;
+  background-color: $compColor;
+  @media (min-width: 768px) {
+    color: red;
+  }
+  h2 { 
+    border: 5px solid #000;
+    span { 
+      display: inline-block;
+      background: #000;
+      color: #fff;
+      padding: 5px;
+    }
+  }
+  a { 
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    &:hover {
+      background-color: tomato;
+    }
+  }
+  &__title {
+    box-shadow: 0 0 5px #000;
+  }
+}
+
+.test-container {
+  padding: 15px;
+  font-size: 1.2rem;
+  margin: 100px auto;
+  // Build-in functions
+  width: percentage(750 / 1200);
+  color: lighten($baseColor, 15);
+  box-shadow: 0 0 15px rgba($baseColor, 50);
+  background-color: $baseColor;
+  border: solid 10px darken($baseColor, 20);
+}
+
+@each $name, $color in $buttonColors {
+  .btn-#{$name} {
+    background-color: $color;
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    width: ($i * 1) + px;
+    // @if ($i % 2 == 0) {
+    //   background-color: tomato;
+    // }
+    background-color: if($i % 2 == 0, tomato, olive);
+    // $i % 2 == 0 ? true : false;
+  }
+}
+
+.product-card {
+  @include cardBaseStyle {
+    font-size: 14px;
+    line-height: 4;
+  };
+  @include flexContainer($wrap: wrap);
+}
+
+.about-us-card {
+  @include cardBaseStyle;
+  @include flexContainer(
+    $align: end,
+    $justify: start,
+    $direction: column,
+    $display: inline-flex,
+  );
+}
+
+.contact-card {
+  @include cardBaseStyle;
+  @include gradient(
+    $type: radial,
+    $direction: to right,
+    $initialColor: blue,
+    $endColor: red,
+  );
+}
